@@ -1,3 +1,4 @@
 rest
 .pycache
-hacks.txt
+__pycache__
+instance
