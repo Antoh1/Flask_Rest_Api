@@ -1,22 +1,21 @@
-from flask import Flask
+from flask import Flask, request
 from flask_restful import Api, Resource
 
 app = Flask(__name__)
 api = Api(app)
 
-data = { 'tirop' : {'name':'Kwechi', 'age':32, 'height':5.7},
-             'Kip' : {'name':'Rael', 'age':34, 'height':6.8}
-            }
+youtube_vids = {}
 
 class index(Resource):
-    def get(self, name):
-        return {'user':data[name]}
+    def get(self, vid_id):
+        return youtube_vids[vid_id]
 
-    # def post(self):
-    #     return {'name':'ando', 'age':32}    
+    def put(self, vid_id):
+        print(request.form)
+        return {}    
 
 
-api.add_resource(index, '/user/<string:name>')
+api.add_resource(index, '/user/<int:vid_id>')
 
 
 if __name__ == '__main__':
